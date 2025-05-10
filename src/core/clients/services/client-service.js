@@ -7,17 +7,20 @@ const dbAllAsync = util.promisify(db.all).bind(db)
 exports.findAll = async () => {
     try {
         logger.info('Iniciando a busca de todos os clientes.')
-        const query = ''
+        
+        const query = 'SELECT * FROM clientes';
+
         if(!query) {
-            throw new CustomError('Você precisa informar a query de consulta', 400, 'BAD_REQUEST')
+            throw new CustomError('Você precisa informar a query de consulta', 400)
         }
+
         const rows = await dbAllAsync(query, [])
         
         console.log(rows, 'estou logando os rows')
         return rows 
     } catch (error) {
         logger.error()
-         throw new CustomError('Ocorreu um erro ao realizar a busca')
+         throw new CustomError('Ocorreu um erro ao realizar a busca', 500)
     }
 }
 

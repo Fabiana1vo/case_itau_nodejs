@@ -1,10 +1,10 @@
 class CustomError extends Error { 
-    constructor(message, status_code, code) {
+    constructor(message, status_code) {
         super(message);
         this.name = 'CustomError';
-        this.code = code;
-        this.statusCode = status_code;
+        this.statusCode = statusCode;
         Error.captureStackTrace(this, this.constructor);
+
     }
 }
 

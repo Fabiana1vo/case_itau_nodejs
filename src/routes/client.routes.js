@@ -1,4 +1,3 @@
-const db = require('../../database')
 const express = require('express');
 const router = express.Router();
 const { getClients } = require('../core/clients/controllers/client-controller')

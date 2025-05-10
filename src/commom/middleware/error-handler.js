@@ -6,7 +6,6 @@ function errorHandler(err, req, res, next) {
   if (err instanceof CustomError) {
     logger.error(`Erro personalizado: ${err.message}`, {
       statusCode: err.statusCode,
-      code: err.code,
       stack: err.stack,
       method: req.method,
       url: req.originalUrl,

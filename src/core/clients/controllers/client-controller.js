@@ -3,6 +3,7 @@ const clientService = require('../services/client-service')
 
 exports.getClients = async (req, res, next) => {
     try {
+        console.log('tentando capturar os clientes')
         const response = await clientService.findAll();
         res.status(200).json(response)
     } catch (error) {

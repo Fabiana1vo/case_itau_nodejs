@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const clientesRoutes = require('./client.routes');
-const authRoutes = require('./auth.routes');
+// const authRoutes = require('./auth.routes');
 
 router.use('/clientes', clientesRoutes)
 
@@ -21,6 +21,7 @@ router.use('/clientes', clientesRoutes)
 
 // Rota padrão para verificar se a API está funcionando
 router.get('/', (req, res) => {
+  console.log('na rota get pura')
   res.json({ message: 'API está funcionando' });
 });
 
