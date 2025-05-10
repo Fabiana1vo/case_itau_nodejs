@@ -1,15 +1,14 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database(':memory:');
+const logger = require('./src/config/logger')('DATABASE_CONFIG')
 
-db.serialize(() => {
-    db.run(`CREATE TABLE clientes(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nome TEXT NOT NULL,
-        email TEXT NOT NULL UNIQUE,
-        saldo FLOAT
-    )`)
 
-    db.run(`INSERT INTO clientes(nome, email, saldo) VALUES(?, ?, 0)`, ['TESTE', 'TESTE@TESTE.com.br']);
-})
+const db = new sqlite3.Database(':memory:', (error) => { 
+    if(error) {
+        logger.error(`Erro ao conectar ao banco de dados: ${error.message}`)
+        throw new CustomError('Erro ao se conectar ao banco de dados', 400, 'BAD_REQUEST');
+    } 
+    logger.info('Conectado ao banco de dados SQLite em memória com sucesso!')
+});
 
 module.exports = db;
+
