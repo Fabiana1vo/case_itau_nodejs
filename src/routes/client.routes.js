@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getClients, getClient, createClient, updateClient, deleteClient } = require('../core/clients/controllers/client-controller')
+const { getClients, getClient, createClient, updateClient, deleteClient, deposit } = require('../core/clients/controllers/client-controller')
 
 // const authMiddleware = require('../common/middleware/authMiddleware');
 
@@ -11,6 +11,8 @@ router.get('/:id', getClient)
 router.post('/', createClient);
 router.put('/:id', updateClient)
 router.delete('/:id',deleteClient);
+router.post('/:id/depositar', deposit);
+
 
 
 

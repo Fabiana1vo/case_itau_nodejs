@@ -82,25 +82,42 @@ exports.updateClient = async (req, res, next) => {
 
 exports.deleteClient = async (req, res, next) => {
     try {
-         const { id } = req.params;
+       const { id } = req.params;
         
-         if(!clientValidations.isValidNumericId(id)){
+    if(!clientValidations.isValidNumericId(id)){
             throw new CustomError('Informe um ID válido', 404, 'BAD_REQUEST')
-        }
+    }
 
-        await clientService.delete(id);
+    await clientService.delete(id);
 
-        res.status(204).json()
+    res.status(204).json();
     } catch (error) {
         next(error)
     }
 }
 
-// router.delete('/clientes/:id', (req,res) => {
+exports.deposit = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const { valor } = req.body;
+
+        const response = await clientService.deposit(id, valor)
+        return 'deu bom no controllre'
+
+    } catch (error) {
+        next(error)
+    }
+}
+
+
+
+// router.post('/clientes/:id/depositar', (req,res) => {
 //     const { id } = req.params;
+//     const { valor } = req.body;
+//     console.log({id, valor});
 //     try
 //     {
-//         db.run(`DELETE FROM clientes WHERE id = ?`, [id]);
+//         db.run(`UPDATE clientes SET saldo = saldo + ? WHERE id = ?`, [valor, id]);
 //         return res.status(200).json();
 //     }
 //     catch(err){
@@ -108,7 +125,4 @@ exports.deleteClient = async (req, res, next) => {
 //         return res.status(400).json(err);
 //     }
 // })
-
-
-
 

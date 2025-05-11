@@ -1,4 +1,3 @@
-const util = require('util');
 const logger = require('../../../config/logger')('CLIENT_SERVICE');
 const { CustomError } = require('../../../commom/errors/custom-error')
 const queryExecutor = require('../../../commom/database/query-executor')
@@ -136,6 +135,7 @@ exports.delete = async (id) => {
 
         logger.info(`Iniciando o processo de exclusão da conta: ${id}`)
         let query = `SELECT saldo FROM clientes WHERE id = ?`;
+       
         const saldo = await queryExecutor.dbGetAsync(query,[id])
 
         if(!saldo){
@@ -161,15 +161,29 @@ exports.delete = async (id) => {
      
 }
 
-// router.delete('/clientes/:id', (req,res) => {
-//     const { id } = req.params;
-//     try
-//     {
-//         db.run(`DELETE FROM clientes WHERE id = ?`, [id]);
-//         return res.status(200).json();
-//     }
-//     catch(err){
-//         console.log(err);
-//         return res.status(400).json(err);
-//     }
-// })
+exports.deposit = async (id, valor) => {
+    try {
+       logger.info(`Iniciando a adicção de saldo para conta: ${id}`)
+       let query = `UPDATE clientes SET saldo = saldo + ? WHERE id = ?`;
+       const response = await queryExecutor.dbRunWithLastID(query, [valor, id]);
+
+       if(!response) {
+        throw new CustomError("Ocorreu um erro ao tentar adicionar o saldo na sua conta. Tente novamente mais tarde", 500, 'SERVER_ERROR')
+       }
+
+        query = `SELECT saldo FROM clientes WHERE id = ? `
+
+        const saldo = await queryExecutor.dbGetAsync(query,[id])
+
+        logger(`Saldo adicoinado com sucesso. O saldo atual é de: ${saldo}`)
+
+        return saldo;
+    } catch (error) {
+        if(error.isOperational){
+            throw error;
+        }
+        throw new CustomError('Ocorreu um erro ao adicionar o saldo na sua conta. Tente novamente mais tarde', 500,' SERVER_ERROR')
+    }
+}
+
+

@@ -79,10 +79,6 @@ router.get('/', (req, res) => {
 
 
 
-//*********************************** */
-
-
-
 // router.delete('/clientes/:id', (req,res) => {
 //     const { id } = req.params;
 //     try
@@ -95,7 +91,6 @@ router.get('/', (req, res) => {
 //         return res.status(400).json(err);
 //     }
 // })
-
 
 
 // router.post('/clientes/:id/depositar', (req,res) => {
@@ -112,6 +107,14 @@ router.get('/', (req, res) => {
 //         return res.status(400).json(err);
 //     }
 // })
+
+
+//*********************************** */
+
+
+
+
+
 
 // router.post('/clientes/:id/sacar', (req,res) => {
 //     const { id } = req.params;
