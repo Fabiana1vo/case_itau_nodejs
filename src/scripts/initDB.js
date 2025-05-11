@@ -11,10 +11,10 @@ exports.initDB = async () => {
         // Criar tabela "clientes"
         await queryExecutor.dbRunAsync(`
             CREATE TABLE IF NOT EXISTS clientes (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                nome TEXT NOT NULL,
-                email TEXT NOT NULL UNIQUE,
-                saldo FLOAT
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nome TEXT NOT NULL,
+            email TEXT NOT NULL UNIQUE,
+            saldo REAL
             )
         `);
 

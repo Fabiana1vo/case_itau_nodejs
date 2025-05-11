@@ -1,9 +1,9 @@
 const logger = require('../../../config/logger')('CLIENT_SERVICE');
 const { CustomError } = require('../../../commom/errors/custom-error')
 const queryExecutor = require('../../../commom/database/query-executor')
+const { integerToDecimal, convertCurrencyToCents} = require('../../../commom/utils/currency-formatter')
+ 
 
- 
- 
 exports.findAll = async () => {
     try {
         logger.info('Iniciando a busca de todos os clientes.')
@@ -163,27 +163,40 @@ exports.delete = async (id) => {
 
 exports.deposit = async (id, valor) => {
     try {
-       logger.info(`Iniciando a adicção de saldo para conta: ${id}`)
-       let query = `UPDATE clientes SET saldo = saldo + ? WHERE id = ?`;
-       const response = await queryExecutor.dbRunWithLastID(query, [valor, id]);
+        logger.info(`Iniciando a adição de saldo para conta: ${id}`);
 
-       if(!response) {
-        throw new CustomError("Ocorreu um erro ao tentar adicionar o saldo na sua conta. Tente novamente mais tarde", 500, 'SERVER_ERROR')
-       }
+        if (isNaN(valor) || valor === null || valor === undefined) {
+            throw new CustomError("Valor inválido", 400, 'BAD_REQUEST');
+        }
 
-        query = `SELECT saldo FROM clientes WHERE id = ? `
+        // Converter o valor para centavos
+        const valorCentavos = convertCurrencyToCents(valor)
 
-        const saldo = await queryExecutor.dbGetAsync(query,[id])
+        if (valorCentavos <= 0) {
+            throw new CustomError("O valor do depósito deve ser maior que zero", 400, 'BAD_REQUEST');
+        }
 
-        logger(`Saldo adicoinado com sucesso. O saldo atual é de: ${saldo}`)
+        let query = `UPDATE clientes SET saldo = saldo + ? WHERE id = ?`;
+        const response = await queryExecutor.dbRunWithLastID(query, [valorCentavos, id]);
 
-        return saldo;
+        if (!response || !response.changes) {
+            throw new CustomError("Ocorreu um erro ao tentar adicionar o saldo na sua conta. Tente novamente mais tarde", 500, 'SERVER_ERROR');
+        }
+
+        // Buscar o saldo atualizado em centavos
+        query = `SELECT saldo FROM clientes WHERE id = ?`;
+        const result = await queryExecutor.dbGetAsync(query, [id]);
+ 
+        logger.info(`Saldo adicionado com sucesso. O saldo atual é de: ${result.saldo}`);
+
+        return { saldo: result.saldo }; // Retorna o saldo formatado
     } catch (error) {
-        if(error.isOperational){
+        if (error.isOperational) {
             throw error;
         }
-        throw new CustomError('Ocorreu um erro ao adicionar o saldo na sua conta. Tente novamente mais tarde', 500,' SERVER_ERROR')
+        throw new CustomError('Ocorreu um erro ao adicionar o saldo na sua conta. Tente novamente mais tarde', 500, 'SERVER_ERROR');
     }
-}
+};
+
 
 

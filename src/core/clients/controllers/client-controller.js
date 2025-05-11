@@ -102,7 +102,7 @@ exports.deposit = async (req, res, next) => {
         const { valor } = req.body;
 
         const response = await clientService.deposit(id, valor)
-        return 'deu bom no controllre'
+        res.status(200).json(formatSuccessResponse(response, 'Depósito realizado com sucesso!'))
 
     } catch (error) {
         next(error)
@@ -110,14 +110,26 @@ exports.deposit = async (req, res, next) => {
 }
 
 
+exports.withdraw = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const { valor } = req.body;
 
-// router.post('/clientes/:id/depositar', (req,res) => {
+        const response = await clientService.deposit(id, valor)
+        res.status(200).json(formatSuccessResponse(response, 'Saque realizado com sucesso!'))
+
+    } catch (error) {
+        next(error)
+    }
+}
+
+// router.post('/clientes/:id/sacar', (req,res) => {
 //     const { id } = req.params;
 //     const { valor } = req.body;
 //     console.log({id, valor});
 //     try
 //     {
-//         db.run(`UPDATE clientes SET saldo = saldo + ? WHERE id = ?`, [valor, id]);
+//         db.run(`UPDATE clientes SET saldo = saldo - ? WHERE id = ?`, [valor, id]);
 //         return res.status(200).json();
 //     }
 //     catch(err){
@@ -125,4 +137,3 @@ exports.deposit = async (req, res, next) => {
 //         return res.status(400).json(err);
 //     }
 // })
-
