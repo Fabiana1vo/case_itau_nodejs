@@ -1,16 +1,15 @@
-const db = require('../../database');
+const db = require('../commom/database/database');
 const logger = require('../config/logger')('INIT_DATABASE');
 const util = require('util');
+const queryExecutor = require('../commom/database/query-executor')
 
-
-const runAsync = util.promisify(db.run).bind(db);
-
+ 
 exports.initDB = async () => {
     try {
         logger.info('Inicializando as tabelas do banco de dados.');
 
         // Criar tabela "clientes"
-        await runAsync(`
+        await queryExecutor.dbRunAsync(`
             CREATE TABLE IF NOT EXISTS clientes (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 nome TEXT NOT NULL,
@@ -23,7 +22,7 @@ exports.initDB = async () => {
         const nomeTeste = 'TESTE';
         const emailTeste = 'TESTE@TESTE.com.br';
 
-        await runAsync(
+        await queryExecutor.dbRunAsync(
             `INSERT INTO clientes(nome, email, saldo) VALUES(?, ?, 0)`,
             [nomeTeste, emailTeste]
         );

@@ -1,15 +1,10 @@
-const db = require('../../../../database')
 const util = require('util');
 const logger = require('../../../config/logger')('CLIENT_SERVICE');
 const { CustomError } = require('../../../commom/errors/custom-error')
+const queryExecutor = require('../../../commom/database/query-executor')
 
-
-// poderia separar isso em um arquivo mas criaria uma complexidade maior para este cenário simples
-const dbAllAsync = util.promisify(db.all).bind(db);
-const dbGetAsync = util.promisify(db.get).bind(db);
-const dbRunAsync = util.promisify(db.run).bind(db);
-const dbExecAsync = util.promisify(db.exec).bind(db);
-
+ 
+ 
 exports.findAll = async () => {
     try {
         logger.info('Iniciando a busca de todos os clientes.')
@@ -22,7 +17,7 @@ exports.findAll = async () => {
          */
 
 
-        const rows = await dbAllAsync(query, [])
+        const rows = await queryExecutor.dbAllAsync(query, [])
         logger.info(`Consulta realizada com sucesso. Total de registros encontrados: ${rows.length}`);
 
         return rows
@@ -68,7 +63,6 @@ exports.find = async (id) => {
     }
 }
 
-
 exports.create = async (nome, email) => {
         try {
 
@@ -76,12 +70,18 @@ exports.create = async (nome, email) => {
 
           //* ANTES DE CRIAR VALIDAR SE O EMAIL EXISTE!!!
 
-           const query = `INSERT INTO clientes(nome, email) VALUES(?,?)`;
-           const result = await dbRunAsync(query,[nome, email])
+           const query = `INSERT INTO clientes(nome, email, saldo) VALUES(?,?, 0)`;
+           const result = await dbRunWithLastID(query, [nome, email]);
+         
+        //    const insertedId = result && result.lastID !== undefined ? result.lastID : null;
+         const insertedId = result && result.lastID !== undefined ? result.lastID : null;
 
-           console.log(result, 'resultado bruto')
-           console.log(typeof(result), 'tipo do resultado')
-           return 'deu bom'
+        if (!insertedId) {
+            throw new CustomError('Erro ao obter o ID do cliente criado.', 500, 'INSERT_ERROR');
+        }
+
+        return { id: insertedId, nome, email, saldo: 0 };
+
         } catch (error) {
             console.log(error, 'vendo o error')
             if(error.isOperational){
