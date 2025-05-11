@@ -20,11 +20,7 @@ exports.getClients = async (req, res, next) => {
 exports.getClient = async (req, res, next ) => {
     try {
         const { id } = req.params; 
-
-        if(!clientValidations.isNotUndefinedOrNullValue(id)) { 
-            throw new CustomError("Você precisa informar o ID do cliente", 400, 'BAD_REQUEST')
-        } 
-
+ 
         if(!clientValidations.isValidNumericId(id)) {
             throw new CustomError('Informe um ID válido', 400, 'BAD_REQUEST')
         }
@@ -65,18 +61,40 @@ exports.createClient = async (req,res,next) => {
 exports.updateClient = async (req, res, next) => {
     try {
         const { id } = req.params;
-        if(!clientValidations.isValidNumericId(id) || !clientValidations.isNotUndefinedOrNullValue(id)){
-            throw new CustomError('Informe um ID válido')
+        const { nome, email } = req.body; 
+ 
+        if(!clientValidations.isValidNumericId(id)){
+            throw new CustomError('Informe um ID válido', 404, 'BAD_REQUEST')
         }
 
-        const response = await clientService.update(id);
+        if ((!nome || !clientValidations.isNotUndefinedOrNullValue(nome)) && 
+            (!email || !clientValidations.isNotUndefinedOrNullValue(email))) {
+            throw new CustomError('Você precisa informar pelo menos um campo válido: nome ou email.', 400, 'BAD_REQUEST');
+        }
+
+        const response = await clientService.update(id, nome, email);
         res.status(200).json(formatSuccessResponse(response, 'Cliente atualizado com sucesso!'))
     
     } catch (error) {
-        
+     next(error)        
     }
 }
 
+exports.deleteClient = async (req, res, next) => {
+    try {
+         const { id } = req.params;
+        
+         if(!clientValidations.isValidNumericId(id)){
+            throw new CustomError('Informe um ID válido', 404, 'BAD_REQUEST')
+        }
+        
+        await clientService.delete(id);
+
+        res.status(204).json()
+    } catch (error) {
+        next(error)
+    }
+}
 
 
 

@@ -65,14 +65,15 @@ exports.find = async (id) => {
 
 exports.create = async (nome, email) => {
         try {
-
          logger.info("Inciando o registro de um novo usuário")
          const existingUser = await queryExecutor.dbGetAsync(`SELECT email FROM clientes WHERE email = ?`, [email])
-         logger.info("O usuário ainda não existe. Iniciando o processo de registro.")
        
          if(existingUser){
             throw new CustomError("Este e-mail já está em uso.", 400, 'BAD_REQUEST')
           }
+          
+        
+        logger.info("O usuário ainda não existe. Iniciando o processo de registro.")
 
         const query = `INSERT INTO clientes(nome, email, saldo) VALUES(?,?, 0)`;
         const result = await queryExecutor.dbRunWithLastID(query, [nome, email]);
@@ -84,6 +85,7 @@ exports.create = async (nome, email) => {
         }
 
         logger.info(`Cliente ${insertedId}, ${nome}, criado com sucesso!`)
+        
         return { id: insertedId, nome, email, saldo: 0 };
 
         } catch (error) {
@@ -94,15 +96,60 @@ exports.create = async (nome, email) => {
         }
 }
 
-
-exports.update = async () => {
+exports.update = async (id, nome, email) => {
     try {
-        //localizar o cliente
-        //validar o campo
-        //validar a entrada do campo
-        //atualizar
-        //retornar sucesso e dado atualizado 
+        const fieldsToUpdate = [];
+        const values = [];
+
+        if (nome) {
+            fieldsToUpdate.push('nome = ?');
+            values.push(nome);
+        }
+
+        if (email) {
+            fieldsToUpdate.push('email = ?');
+            values.push(email);
+        }
+
+        const query = `UPDATE clientes SET ${fieldsToUpdate.join(', ')} WHERE id = ?`;
+        values.push(id);
+
+        const result = await queryExecutor.dbRunWithLastID(query, values);
+
+        if (result.changes === 0) {
+            throw new CustomError('Cliente não encontrado ou nenhum dado foi alterado.', 404, 'NOT_FOUND');
+        }
+
+        logger.info(`Cliente ${id} atualizado com sucesso!`);
+
+        return { id, ...(nome && { nome }), ...(email && { email }) };
+    } catch (error) {
+        if(error.isOperational){
+            throw error;
+        }
+        throw new CustomError('Ocorreu um erro ao atualizar os dados. Tente novamente mais tarde', 500,' SERVER_ERROR')
+    }
+}
+
+exports.delete = async (id) => {
+    try {
+        //implementar a exclusao logica
     } catch (error) {
         
     }
 }
+
+
+// router.put('/clientes/:id', (req,res) => {
+//     const { id } = req.params;
+//     const { nome, email } = req.body;
+//     try
+//     {
+//         db.run(`UPDATE clientes SET nome = ?, email = ? WHERE id = ?`, [nome, email, id]);
+//         return res.status(200).json();
+//     }
+//     catch(err){
+//         console.log(err);
+//         return res.status(400).json(err);
+//     }
+// })

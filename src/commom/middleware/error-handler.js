@@ -5,7 +5,6 @@ const logger = require('../../config/logger')('ERROR_HANDLER');
 function errorHandler(err, req, res, next) {
   const timestamp = new Date().toISOString();
   if (err instanceof CustomError) {
-    console.log(err,'vendo o erro que chegou no middleware')
     logger.error(`Erro personalizado: ${err.message}`, {
       statusCode: err.statusCode,
       stack: err.stack,

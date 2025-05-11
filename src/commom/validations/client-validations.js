@@ -1,5 +1,8 @@
 
 function isValidNumericId(id){
+    if(!id){
+        return false
+    }
     const regex = /^[+-]?\d+(\.\d+)?$/;
     return  regex.test(id)
 }
