@@ -1968,3 +1968,37 @@
 {"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
 {"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
 {"level":"info","message":"Consulta realizada com sucesso. Total de registros encontrados: 1","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Consulta realizada com sucesso. Total de registros encontrados: 1","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Consulta realizada com sucesso. Total de registros encontrados: 1","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a criação de um novo cliente","moduleName":"CLIENT_SERVICE"}
+{"clientId":"não autenticado","level":"error","message":"Erro personalizado: Ocorreu um erro ao registar cliente. Tente novamente mais tarde!","method":"POST","moduleName":"ERROR_HANDLER","stack":"CustomError: Ocorreu um erro ao registar cliente. Tente novamente mais tarde!\n    at exports.create (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\services\\client-service.js:96:19)\n    at async exports.createClient (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\controllers\\client-controller.js:57:25)","statusCode":500,"timestamp":"2025-05-11T05:26:40.694Z","url":"/api/v1/clientes"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Iniciando a criação de um novo cliente","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a criação de um novo cliente","moduleName":"CLIENT_SERVICE"}
+{"clientId":"não autenticado","level":"error","message":"Erro personalizado: Este e-mail já está sendo usado.","method":"POST","moduleName":"ERROR_HANDLER","stack":"CustomError: Este e-mail já está sendo usado.\n    at exports.create (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\services\\client-service.js:76:19)\n    at async exports.createClient (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\controllers\\client-controller.js:57:25)","statusCode":400,"timestamp":"2025-05-11T05:27:02.995Z","url":"/api/v1/clientes"}
+{"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Consulta realizada com sucesso. Total de registros encontrados: 2","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a criação de um novo cliente","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Consulta realizada com sucesso. Total de registros encontrados: 3","moduleName":"CLIENT_SERVICE"}

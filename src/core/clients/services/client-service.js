@@ -70,8 +70,14 @@ exports.create = async (nome, email) => {
 
           //* ANTES DE CRIAR VALIDAR SE O EMAIL EXISTE!!!
 
+          const existingUser = await queryExecutor.dbGetAsync(`SELECT email FROM clientes WHERE email = ?`, [email])
+
+          if(existingUser){
+            throw new CustomError("Este e-mail já está sendo usado.", 400, 'BAD_REQUEST')
+          }
+
            const query = `INSERT INTO clientes(nome, email, saldo) VALUES(?,?, 0)`;
-           const result = await dbRunWithLastID(query, [nome, email]);
+           const result = await queryExecutor.dbRunWithLastID(query, [nome, email]);
          
         //    const insertedId = result && result.lastID !== undefined ? result.lastID : null;
          const insertedId = result && result.lastID !== undefined ? result.lastID : null;
