@@ -36,7 +36,7 @@ router.get('/', (req, res) => {
 //     })
 // })
 
-//*********************************** */
+
 
 // router.get('/clientes/:id', (req,res) => {
 //     const {id} = req.params;
@@ -47,6 +47,9 @@ router.get('/', (req, res) => {
 //         return res.json(rows);
 //     })
 // })
+
+//*********************************** */
+
 
 
 

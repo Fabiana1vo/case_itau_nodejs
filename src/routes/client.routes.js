@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getClients, getClient } = require('../core/clients/controllers/client-controller')
+const { getClients, getClient, createClient } = require('../core/clients/controllers/client-controller')
 
 // const authMiddleware = require('../common/middleware/authMiddleware');
 
@@ -8,9 +8,9 @@ const { getClients, getClient } = require('../core/clients/controllers/client-co
 
 router.get('/', getClients);
 router.get('/:id', getClient)
+router.post('/', createClient);
 
 
-// router.post('/', clientController.createClient);
 // router.put('/:id', clientController.updateClient);
 // router.delete('/:id', clientController.deleteClient);
 

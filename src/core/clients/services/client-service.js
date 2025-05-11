@@ -35,8 +35,6 @@ exports.findAll = async () => {
     }
 }
 
-
-
 /**
  * @async
  * @function exports.find
@@ -73,13 +71,25 @@ exports.find = async (id) => {
 }
 
 
+exports.create = async ({ name, email }) => {
+        try {
+            
+        } catch (error) {
+            
+        }
+}
 
 
-//  router.get('/clientes', (req,res) => {
-//     const query = 'SELECT * FROM clientes';
-//     db.all(query, [], (err,rows) => {
-//         if (err) 
-//             return res.status(400).json({error: err.message});
-//         return res.json(rows);
-//     })
+
+// router.post('/clientes', (req,res) => {
+//     const {nome, email } = req.body;
+//     try
+//     {
+//         db.run(`INSERT INTO clientes(nome, email) VALUES(?, ?)`, [nome, email]);
+//         return res.status(200).json();
+//     }
+//     catch(err){
+//         console.log(err);
+//         return res.status(400).json(err);
+//     }
 // })
