@@ -1216,3 +1216,59 @@
 {"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
 {"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
 {"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"error","message":"Ocorreu um erro durante a busca Cliente não localizado!","moduleName":"CLIENT_SERVICE"}
+{"clientId":"não autenticado","level":"error","message":"Erro personalizado: Cliente não localizado!","method":"GET","moduleName":"ERROR_HANDLER","stack":"CustomError: Cliente não localizado!\n    at exports.find (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\services\\client-service.js:51:19)\n    at async exports.getClient (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\controllers\\client-controller.js:27:26)","statusCode":404,"timestamp":"2025-05-11T01:27:26.897Z","url":"/api/v1/clientes/10"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"error","message":"Ocorreu um erro durante a busca Cliente não localizado!","moduleName":"CLIENT_SERVICE"}
+{"clientId":"não autenticado","level":"error","message":"Erro personalizado: Cliente não localizado!","method":"GET","moduleName":"ERROR_HANDLER","stack":"CustomError: Cliente não localizado!\n    at exports.find (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\services\\client-service.js:50:19)\n    at async exports.getClient (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\controllers\\client-controller.js:27:26)","statusCode":404,"timestamp":"2025-05-11T02:18:13.835Z","url":"/api/v1/clientes/10"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}

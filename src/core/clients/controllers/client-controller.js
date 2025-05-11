@@ -23,6 +23,11 @@ exports.getClient = async (req, res, next ) => {
             logger.error("Id não informado!")
             throw new CustomError("Você precisa informar o ID do cliente", 400, 'BAD_REQUEST')
         } 
+        const validId = isValidNumericId(id)
+        
+        if(!validId) {
+            throw new CustomError('Informe um ID válido', 400, 'BAD_REQUEST')
+        }
 
         const response = await clientService.find(id)
         res.status(200).json(formatSuccessResponse(response,'Cliente localizado com sucesso!'))
@@ -43,3 +48,10 @@ exports.getClient = async (req, res, next ) => {
 //         return res.json(rows);
 //     })
 // })
+
+
+
+function isValidNumericId(id){
+    const regex = /^[+-]?\d+(\.\d+)?$/;
+    return  regex.test(id)
+}

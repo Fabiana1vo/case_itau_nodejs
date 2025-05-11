@@ -37,27 +37,32 @@ exports.findAll = async () => {
 
 
 
+/**
+ * @async
+ * @function exports.find
+ * @description Busca cliente por ID.
+ * @param {*} id - ID do cliente.
+ * @returns {Promise<object|Array<object>>} Cliente encontrado.
+ * @throws {CustomError} 400 ('ID necessário'), 404 ('Cliente não localizado'), 500 ('Erro ao buscar').
+ */
+
 exports.find = async (id) => { 
     try {
         if(!id){
             throw new CustomError('É necessário informar o Id', 400, 'BAD_REQUEST')
         }
-
+        
         const query = 'SELECT * FROM clientes WHERE id = ?';
-        const result = await dbAllAsync(query, [id])
+        const result = await dbGetAsync(query, [id])
         console.log(result,'result')
        
         if(!result || result.length < 1) {
             throw new CustomError('Cliente não localizado!', 404, 'NOT_FOUND')
         }
-
         return result;
 
     } catch (error) {
-    
         logger.error(`Ocorreu um erro durante a busca ${error.message}`)
-
-        console.log(error,'error')
         if(error.isOperational) {  
             console.log('é u')  
             throw error
@@ -66,6 +71,8 @@ exports.find = async (id) => {
         throw new CustomError('Erro ao buscar cliente', 500, 'SERVER_ERROR');
     }
 }
+
+
 
 
 //  router.get('/clientes', (req,res) => {
