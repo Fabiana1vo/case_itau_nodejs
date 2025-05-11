@@ -46,23 +46,21 @@ exports.findAll = async () => {
 
 exports.find = async (id) => { 
     try {
-        if(!id){
-            throw new CustomError('É necessário informar o Id', 400, 'BAD_REQUEST')
-        }
+
+        logger.info(`Iniciando a busca do cliente de id: ${id} no banco de dados...`)
         
         const query = 'SELECT * FROM clientes WHERE id = ?';
         const result = await dbGetAsync(query, [id])
-        console.log(result,'result')
        
-        if(!result || result.length < 1) {
+        if(!result || result == undefined) {
             throw new CustomError('Cliente não localizado!', 404, 'NOT_FOUND')
         }
+
+        logger.info(`Cliente ${id} localizado com sucesso!`)
         return result;
 
     } catch (error) {
-        logger.error(`Ocorreu um erro durante a busca ${error.message}`)
         if(error.isOperational) {  
-            console.log('é u')  
             throw error
         }
 
@@ -73,7 +71,7 @@ exports.find = async (id) => {
 
 exports.create = async ({ name, email }) => {
         try {
-            
+           
         } catch (error) {
             
         }
