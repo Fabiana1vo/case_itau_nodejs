@@ -63,9 +63,6 @@ router.get('/', (req, res) => {
 //     }
 // })
 
-//*********************************** */
-
-
 // router.put('/clientes/:id', (req,res) => {
 //     const { id } = req.params;
 //     const {nome, email } = req.body;
@@ -79,6 +76,10 @@ router.get('/', (req, res) => {
 //         return res.status(400).json(err);
 //     }
 // })
+
+
+
+//*********************************** */
 
 
 

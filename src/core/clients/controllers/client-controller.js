@@ -87,7 +87,7 @@ exports.deleteClient = async (req, res, next) => {
          if(!clientValidations.isValidNumericId(id)){
             throw new CustomError('Informe um ID válido', 404, 'BAD_REQUEST')
         }
-        
+
         await clientService.delete(id);
 
         res.status(204).json()
@@ -95,6 +95,20 @@ exports.deleteClient = async (req, res, next) => {
         next(error)
     }
 }
+
+// router.delete('/clientes/:id', (req,res) => {
+//     const { id } = req.params;
+//     try
+//     {
+//         db.run(`DELETE FROM clientes WHERE id = ?`, [id]);
+//         return res.status(200).json();
+//     }
+//     catch(err){
+//         console.log(err);
+//         return res.status(400).json(err);
+//     }
+// })
+
 
 
 

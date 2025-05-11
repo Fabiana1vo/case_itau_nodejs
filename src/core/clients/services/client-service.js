@@ -133,19 +133,39 @@ exports.update = async (id, nome, email) => {
 
 exports.delete = async (id) => {
     try {
-        //implementar a exclusao logica
-    } catch (error) {
+
+        logger.info(`Iniciando o processo de exclusão da conta: ${id}`)
+        let query = `SELECT saldo FROM clientes WHERE id = ?`;
+        const saldo = await queryExecutor.dbGetAsync(query,[id])
+
+        if(!saldo){
+            throw  new CustomError("Cliente não localizado", 400, 'BAD_REQUEST') 
+        }
+
+        if(saldo > 0){
+            throw new CustomError("Você precisa sacar todo o saldo da sua conta antes de solicitar a exclusão", 400, 'BAD_REQUEST')
+        }
+
         
-    }
+        query = `DELETE FROM clientes WHERE id = ?`
+         await queryExecutor.dbRunAsync(query,[id])
+        logger.info(`Cliente ${id} deletado com sucesso!`)
+        return 
+    } catch (error) {
+      
+        if(error.isOperational){
+            throw error;
+        }
+        throw new CustomError('Ocorreu um erro excluir sua conta. Tente novamente mais tarde', 500,' SERVER_ERROR')
+    }               
+     
 }
 
-
-// router.put('/clientes/:id', (req,res) => {
+// router.delete('/clientes/:id', (req,res) => {
 //     const { id } = req.params;
-//     const { nome, email } = req.body;
 //     try
 //     {
-//         db.run(`UPDATE clientes SET nome = ?, email = ? WHERE id = ?`, [nome, email, id]);
+//         db.run(`DELETE FROM clientes WHERE id = ?`, [id]);
 //         return res.status(200).json();
 //     }
 //     catch(err){
