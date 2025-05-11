@@ -27,6 +27,7 @@ router.get('/', (req, res) => {
 
 
 //* Implementado
+
 //   router.get('/clientes', (req,res) => {
 //     const query = 'SELECT * FROM clientes';
 //     db.all(query, [], (err,rows) => {
@@ -48,10 +49,6 @@ router.get('/', (req, res) => {
 //     })
 // })
 
-//*********************************** */
-
-
-
 
 // router.post('/clientes', (req,res) => {
 //     const {nome, email } = req.body;
@@ -65,6 +62,10 @@ router.get('/', (req, res) => {
 //         return res.status(400).json(err);
 //     }
 // })
+
+//*********************************** */
+
+
 
 
 

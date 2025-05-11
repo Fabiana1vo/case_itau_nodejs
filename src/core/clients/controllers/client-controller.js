@@ -55,9 +55,6 @@ exports.createClient = async (req,res,next) => {
         }
 
        const response = await clientService.create(nome, email)
-       console.log(response, 'vendo a response')
-        
-         
         res.status(201).json(formatSuccessResponse(response,'Registro realizado com sucesso!'))
 
     } catch (error) {
@@ -65,6 +62,20 @@ exports.createClient = async (req,res,next) => {
     }
 }
 
+exports.updateClient = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        if(!clientValidations.isValidNumericId(id) || !clientValidations.isNotUndefinedOrNullValue(id)){
+            throw new CustomError('Informe um ID válido')
+        }
+
+        const response = await clientService.update(id);
+        res.status(200).json(formatSuccessResponse(response, 'Cliente atualizado com sucesso!'))
+    
+    } catch (error) {
+        
+    }
+}
 
 
 

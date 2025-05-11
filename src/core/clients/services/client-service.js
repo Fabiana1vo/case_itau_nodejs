@@ -95,16 +95,14 @@ exports.create = async (nome, email) => {
 }
 
 
-
-// router.post('/clientes', (req,res) => {
-//     const {nome, email } = req.body;
-//     try
-//     {
-//         db.run(`INSERT INTO clientes(nome, email) VALUES(?, ?)`, [nome, email]);
-//         return res.status(200).json();
-//     }
-//     catch(err){
-//         console.log(err);
-//         return res.status(400).json(err);
-//     }
-// })
+exports.update = async () => {
+    try {
+        //localizar o cliente
+        //validar o campo
+        //validar a entrada do campo
+        //atualizar
+        //retornar sucesso e dado atualizado 
+    } catch (error) {
+        
+    }
+}
