@@ -12,6 +12,8 @@ function errorHandler(err, req, res, next) {
       method: req.method,
       url: req.originalUrl,
       clientId: req.client?.clientId || 'não autenticado',
+      timestamp
+
     });
     return res.status(err.statusCode).json({
       status: err.statusCode,
@@ -28,6 +30,7 @@ function errorHandler(err, req, res, next) {
     method: req.method,
     url: req.originalUrl,
     clientId: req.client?.clientId || 'não autenticado',
+    timestamp
   });
   
   res.status(500).json({

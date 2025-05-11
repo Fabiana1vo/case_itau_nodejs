@@ -769,3 +769,135 @@
 {"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
 {"level":"error","message":"Ocorreu um erro durante a busca Você precisa informar a query de consulta","moduleName":"CLIENT_SERVICE"}
 {"clientId":"não autenticado","level":"error","message":"Erro personalizado: Você precisa informar a query de consulta","method":"GET","moduleName":"ERROR_HANDLER","stack":"CustomError: Você precisa informar a query de consulta\n    at exports.findAll (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\services\\client-service.js:16:19)\n    at exports.getClients (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\controllers\\client-controller.js:7:46)\n    at Layer.handle [as handle_request] (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:175:3)","statusCode":400,"url":"/api/v1/clientes"}
+{"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
+{"level":"error","message":"Ocorreu um erro durante a busca Você precisa informar a query de consulta","moduleName":"CLIENT_SERVICE"}
+{"clientId":"não autenticado","level":"error","message":"Erro personalizado: Você precisa informar a query de consulta","method":"GET","moduleName":"ERROR_HANDLER","stack":"CustomError: Você precisa informar a query de consulta\n    at exports.findAll (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\services\\client-service.js:16:19)\n    at exports.getClients (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\controllers\\client-controller.js:7:46)\n    at Layer.handle [as handle_request] (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:175:3)","statusCode":400,"url":"/api/v1/clientes"}
+{"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
+{"level":"error","message":"Ocorreu um erro durante a busca Você precisa informar a query de consulta","moduleName":"CLIENT_SERVICE"}
+{"clientId":"não autenticado","level":"error","message":"Erro personalizado: Você precisa informar a query de consulta","method":"GET","moduleName":"ERROR_HANDLER","stack":"CustomError: Você precisa informar a query de consulta\n    at exports.findAll (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\services\\client-service.js:16:19)\n    at exports.getClients (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\controllers\\client-controller.js:7:46)\n    at Layer.handle [as handle_request] (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:175:3)","statusCode":400,"url":"/api/v1/clientes"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
+{"level":"error","message":"Ocorreu um erro durante a busca Você precisa informar a query de consulta","moduleName":"CLIENT_SERVICE"}
+{"clientId":"não autenticado","level":"error","message":"Erro personalizado: Você precisa informar a query de consulta","method":"GET","moduleName":"ERROR_HANDLER","stack":"CustomError: Você precisa informar a query de consulta\n    at exports.findAll (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\services\\client-service.js:16:19)\n    at exports.getClients (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\controllers\\client-controller.js:7:46)\n    at Layer.handle [as handle_request] (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:175:3)","statusCode":400,"timestamp":"2025-05-11T00:22:34.922Z","url":"/api/v1/clientes"}
+{"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
+{"level":"error","message":"Ocorreu um erro durante a busca Você precisa informar a query de consulta","moduleName":"CLIENT_SERVICE"}
+{"clientId":"não autenticado","level":"error","message":"Erro personalizado: Você precisa informar a query de consulta","method":"GET","moduleName":"ERROR_HANDLER","stack":"CustomError: Você precisa informar a query de consulta\n    at exports.findAll (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\services\\client-service.js:16:19)\n    at exports.getClients (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\controllers\\client-controller.js:7:46)\n    at Layer.handle [as handle_request] (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:175:3)","statusCode":400,"timestamp":"2025-05-11T00:26:01.527Z","url":"/api/v1/clientes"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Consulta realizada com sucesso. Total de registros encontrados: 1","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
+{"level":"error","message":"Ocorreu um erro durante a busca SQLITE_MISUSE: not an error","moduleName":"CLIENT_SERVICE"}
+{"clientId":"não autenticado","level":"error","message":"Erro personalizado: Erro ao buscar clientes","method":"GET","moduleName":"ERROR_HANDLER","stack":"CustomError: Erro ao buscar clientes\n    at exports.findAll (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\services\\client-service.js:22:15)\n    at async exports.getClients (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\controllers\\client-controller.js:7:26)","statusCode":500,"timestamp":"2025-05-11T00:33:23.367Z","url":"/api/v1/clientes"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
+{"level":"error","message":"Ocorreu um erro durante a busca SQLITE_MISUSE: not an error","moduleName":"CLIENT_SERVICE"}
+{"clientId":"não autenticado","level":"error","message":"Erro personalizado: Erro ao buscar clientes","method":"GET","moduleName":"ERROR_HANDLER","stack":"CustomError: Erro ao buscar clientes\n    at exports.findAll (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\services\\client-service.js:22:15)\n    at async exports.getClients (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\controllers\\client-controller.js:7:26)","statusCode":500,"timestamp":"2025-05-11T00:33:34.189Z","url":"/api/v1/clientes"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
+{"level":"error","message":"Ocorreu um erro durante a busca SQLITE_MISUSE: not an error","moduleName":"CLIENT_SERVICE"}
+{"clientId":"não autenticado","level":"error","message":"Erro personalizado: Erro ao buscar clientes","method":"GET","moduleName":"ERROR_HANDLER","stack":"CustomError: Erro ao buscar clientes\n    at exports.findAll (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\services\\client-service.js:22:15)\n    at async exports.getClients (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\controllers\\client-controller.js:7:26)","statusCode":500,"timestamp":"2025-05-11T00:33:43.635Z","url":"/api/v1/clientes"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Consulta realizada com sucesso. Total de registros encontrados: 1","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Consulta realizada com sucesso. Total de registros encontrados: 1","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
