@@ -69,11 +69,25 @@ exports.find = async (id) => {
 }
 
 
-exports.create = async ({ name, email }) => {
+exports.create = async (nome, email) => {
         try {
-           
+
+          console.log(nome, email)
+
+          //* ANTES DE CRIAR VALIDAR SE O EMAIL EXISTE!!!
+
+           const query = `INSERT INTO clientes(nome, email) VALUES(?,?)`;
+           const result = await dbRunAsync(query,[nome, email])
+
+           console.log(result, 'resultado bruto')
+           console.log(typeof(result), 'tipo do resultado')
+           return 'deu bom'
         } catch (error) {
-            
+            console.log(error, 'vendo o error')
+            if(error.isOperational){
+                throw error; 
+            }
+            throw new CustomError("Ocorreu um erro ao registar cliente. Tente novamente mais tarde!", 500, 'SERVER_ERROR')
         }
 }
 

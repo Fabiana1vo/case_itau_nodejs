@@ -40,11 +40,11 @@ exports.getClient = async (req, res, next ) => {
 exports.createClient = async (req,res,next) => { 
     try {
         logger.info('Iniciando a criação de um novo cliente')
-        const { name, email } = req.body; 
+        const { nome, email } = req.body; 
 
-        if(!clientValidations.isNotUndefinedOrNullValue(email) || !clientValidations.isNotUndefinedOrNullValue(name) ) {
+        if(!clientValidations.isNotUndefinedOrNullValue(email) || !clientValidations.isNotUndefinedOrNullValue(nome) ) {
             const errors = [];
-            if (!name) errors.push('name');
+            if (!nome) errors.push('nome');
             if (!email) errors.push('email');
             throw new CustomError(`Os campos: [${errors.join(', ')}] são obrigatórios!`, 400, 'BAD_REQUEST');
         }
@@ -54,10 +54,12 @@ exports.createClient = async (req,res,next) => {
             throw new CustomError('Informe um e-mail válido!', 400, 'BAD_REQUEST')
         }
 
-       const response = await clientService.create()
+       const response = await clientService.create(nome, email)
+       console.log(response, 'vendo a response')
         
-        
-        res.status(200).json('deu bom')
+         
+        res.status(201).json(formatSuccessResponse(response,'Registro realizado com sucesso!'))
+
     } catch (error) {
         next(error);
     }
