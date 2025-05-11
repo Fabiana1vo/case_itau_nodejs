@@ -66,30 +66,27 @@ exports.find = async (id) => {
 exports.create = async (nome, email) => {
         try {
 
-          console.log(nome, email)
-
-          //* ANTES DE CRIAR VALIDAR SE O EMAIL EXISTE!!!
-
-          const existingUser = await queryExecutor.dbGetAsync(`SELECT email FROM clientes WHERE email = ?`, [email])
-
-          if(existingUser){
-            throw new CustomError("Este e-mail já está sendo usado.", 400, 'BAD_REQUEST')
+         logger.info("Inciando o registro de um novo usuário")
+         const existingUser = await queryExecutor.dbGetAsync(`SELECT email FROM clientes WHERE email = ?`, [email])
+         logger.info("O usuário ainda não existe. Iniciando o processo de registro.")
+       
+         if(existingUser){
+            throw new CustomError("Este e-mail já está em uso.", 400, 'BAD_REQUEST')
           }
 
-           const query = `INSERT INTO clientes(nome, email, saldo) VALUES(?,?, 0)`;
-           const result = await queryExecutor.dbRunWithLastID(query, [nome, email]);
+        const query = `INSERT INTO clientes(nome, email, saldo) VALUES(?,?, 0)`;
+        const result = await queryExecutor.dbRunWithLastID(query, [nome, email]);
          
-        //    const insertedId = result && result.lastID !== undefined ? result.lastID : null;
          const insertedId = result && result.lastID !== undefined ? result.lastID : null;
 
         if (!insertedId) {
             throw new CustomError('Erro ao obter o ID do cliente criado.', 500, 'INSERT_ERROR');
         }
 
+        logger.info(`Cliente ${insertedId}, ${nome}, criado com sucesso!`)
         return { id: insertedId, nome, email, saldo: 0 };
 
         } catch (error) {
-            console.log(error, 'vendo o error')
             if(error.isOperational){
                 throw error; 
             }
