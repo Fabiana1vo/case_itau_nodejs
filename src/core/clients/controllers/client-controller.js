@@ -69,20 +69,3 @@ exports.createClient = async (req,res,next) => {
 
 
 
-// router.post('/clientes', (req,res) => {
-//     const {nome, email } = req.body;
-//     try
-//     {
-//         db.run(`INSERT INTO clientes(nome, email) VALUES(?, ?)`, [nome, email]);
-//         return res.status(200).json();
-//     }
-//     catch(err){
-//         console.log(err);
-//         return res.status(400).json(err);
-//     }
-// })
-
-
-//criar uma classe de validacao e deixar isso la 
-
-

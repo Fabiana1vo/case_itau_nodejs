@@ -2054,3 +2054,61 @@
 {"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
 {"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
 {"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Consulta realizada com sucesso. Total de registros encontrados: 1","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a criação de um novo cliente","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Inciando o registro de um novo usuário","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"O usuário ainda não existe. Iniciando o processo de registro.","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Cliente 2, Fabiana Ivo, criado com sucesso!","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a criação de um novo cliente","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Inciando o registro de um novo usuário","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"O usuário ainda não existe. Iniciando o processo de registro.","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Cliente 3, Fabiana Ivo, criado com sucesso!","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a criação de um novo cliente","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Inciando o registro de um novo usuário","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"O usuário ainda não existe. Iniciando o processo de registro.","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Cliente 4, Fabiana Ivo, criado com sucesso!","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a criação de um novo cliente","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Inciando o registro de um novo usuário","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"O usuário ainda não existe. Iniciando o processo de registro.","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Cliente 5, Fabiana Ivo, criado com sucesso!","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a busca de todos os clientes.","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Consulta realizada com sucesso. Total de registros encontrados: 5","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a busca do cliente de id: 5 no banco de dados...","moduleName":"CLIENT_SERVICE"}
+{"clientId":"não autenticado","level":"error","message":"Erro personalizado: Erro ao buscar cliente","method":"GET","moduleName":"ERROR_HANDLER","stack":"CustomError: Erro ao buscar cliente\n    at exports.find (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\services\\client-service.js:62:15)\n    at exports.getClient (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\controllers\\client-controller.js:32:46)\n    at Layer.handle [as handle_request] (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:284:15\n    at param (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:365:14)\n    at param (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:376:14)\n    at Function.process_params (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\node_modules\\express\\lib\\router\\index.js:421:3)","statusCode":500,"timestamp":"2025-05-11T05:31:54.219Z","url":"/api/v1/clientes/5"}
+{"level":"info","message":"Inicializando as tabelas do banco de dados.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Conectado ao banco de dados SQLite em memória com sucesso!","moduleName":"DATABASE_CONFIG"}
+{"level":"info","message":"Tabelas inicializadas com sucesso.","moduleName":"INIT_DATABASE"}
+{"level":"info","message":"Servidor rodando na porta 8080","moduleName":"SERVER"}
+{"level":"info","message":"Iniciando a busca do cliente de id: 5 no banco de dados...","moduleName":"CLIENT_SERVICE"}
+{"clientId":"não autenticado","level":"error","message":"Erro personalizado: Cliente não localizado!","method":"GET","moduleName":"ERROR_HANDLER","stack":"CustomError: Cliente não localizado!\n    at exports.find (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\services\\client-service.js:51:19)\n    at async exports.getClient (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\controllers\\client-controller.js:32:26)","statusCode":404,"timestamp":"2025-05-11T05:32:23.611Z","url":"/api/v1/clientes/5"}
+{"level":"info","message":"Iniciando a busca do cliente de id: 4 no banco de dados...","moduleName":"CLIENT_SERVICE"}
+{"clientId":"não autenticado","level":"error","message":"Erro personalizado: Cliente não localizado!","method":"GET","moduleName":"ERROR_HANDLER","stack":"CustomError: Cliente não localizado!\n    at exports.find (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\services\\client-service.js:51:19)\n    at async exports.getClient (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\controllers\\client-controller.js:32:26)","statusCode":404,"timestamp":"2025-05-11T05:33:07.300Z","url":"/api/v1/clientes/4"}
+{"level":"info","message":"Iniciando a busca do cliente de id: 1 no banco de dados...","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Cliente 1 localizado com sucesso!","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a criação de um novo cliente","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Inciando o registro de um novo usuário","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"O usuário ainda não existe. Iniciando o processo de registro.","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Cliente 2, Fabiana Ivo, criado com sucesso!","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a criação de um novo cliente","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Inciando o registro de um novo usuário","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"O usuário ainda não existe. Iniciando o processo de registro.","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Cliente 3, Fabiana Ivo, criado com sucesso!","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a criação de um novo cliente","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Inciando o registro de um novo usuário","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"O usuário ainda não existe. Iniciando o processo de registro.","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Cliente 4, Fabiana Ivo, criado com sucesso!","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a busca do cliente de id: 5 no banco de dados...","moduleName":"CLIENT_SERVICE"}
+{"clientId":"não autenticado","level":"error","message":"Erro personalizado: Cliente não localizado!","method":"GET","moduleName":"ERROR_HANDLER","stack":"CustomError: Cliente não localizado!\n    at exports.find (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\services\\client-service.js:51:19)\n    at async exports.getClient (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\controllers\\client-controller.js:32:26)","statusCode":404,"timestamp":"2025-05-11T05:33:24.673Z","url":"/api/v1/clientes/5"}
+{"level":"info","message":"Iniciando a busca do cliente de id: 4 no banco de dados...","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Cliente 4 localizado com sucesso!","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a busca do cliente de id: 3 no banco de dados...","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Cliente 3 localizado com sucesso!","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a busca do cliente de id: 2 no banco de dados...","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Cliente 2 localizado com sucesso!","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a busca do cliente de id: 1 no banco de dados...","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Cliente 1 localizado com sucesso!","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Iniciando a busca do cliente de id: 0 no banco de dados...","moduleName":"CLIENT_SERVICE"}
+{"clientId":"não autenticado","level":"error","message":"Erro personalizado: Cliente não localizado!","method":"GET","moduleName":"ERROR_HANDLER","stack":"CustomError: Cliente não localizado!\n    at exports.find (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\services\\client-service.js:51:19)\n    at async exports.getClient (C:\\Users\\Fabia\\OneDrive\\Área de Trabalho\\Arquivos\\Itau\\case_itau_nodejs\\src\\core\\clients\\controllers\\client-controller.js:32:26)","statusCode":404,"timestamp":"2025-05-11T05:33:32.624Z","url":"/api/v1/clientes/0"}
+{"level":"info","message":"Iniciando a busca do cliente de id: 2 no banco de dados...","moduleName":"CLIENT_SERVICE"}
+{"level":"info","message":"Cliente 2 localizado com sucesso!","moduleName":"CLIENT_SERVICE"}

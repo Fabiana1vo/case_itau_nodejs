@@ -45,7 +45,7 @@ exports.find = async (id) => {
         logger.info(`Iniciando a busca do cliente de id: ${id} no banco de dados...`)
         
         const query = 'SELECT * FROM clientes WHERE id = ?';
-        const result = await dbGetAsync(query, [id])
+        const result = await queryExecutor.dbGetAsync(query, [id])
        
         if(!result || result == undefined) {
             throw new CustomError('Cliente não localizado!', 404, 'NOT_FOUND')
