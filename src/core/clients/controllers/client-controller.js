@@ -7,6 +7,7 @@ const clientValidations = require('../../../commom/validations/client-validation
 
 // Retorna todos os clientes da base de dados. 
 // Retorna um array vazio caso não exista clientes
+
 exports.getClients = async (req, res, next) => {
     try {
         const response = await clientService.findAll();
@@ -115,7 +116,7 @@ exports.withdraw = async (req, res, next) => {
         const { id } = req.params;
         const { valor } = req.body;
 
-        const response = await clientService.deposit(id, valor)
+        const response = await clientService.withdraw(id, valor)
         res.status(200).json(formatSuccessResponse(response, 'Saque realizado com sucesso!'))
 
     } catch (error) {

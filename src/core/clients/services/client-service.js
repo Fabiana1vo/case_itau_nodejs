@@ -199,4 +199,66 @@ exports.deposit = async (id, valor) => {
 };
 
 
+exports.withdraw = async (id, valor) => {
+    try {
+        logger.info(`Iniciando o saque de saldo para conta: ${id}`);
 
+        if (isNaN(valor) || valor === null || valor === undefined) {
+            throw new CustomError("Valor inválido", 400, 'BAD_REQUEST');
+        }
+
+        // Converter o valor para centavos
+        const valorCentavos = convertCurrencyToCents(valor)
+
+        if (valorCentavos <= 0) {
+            throw new CustomError("O valor do saque deve ser maior que zero", 400, 'BAD_REQUEST');
+        }
+
+        let query = `SELECT saldo FROM clientes WHERE id = ?`;
+        const result = await queryExecutor.dbGetAsync(query, [id]);
+        if (!result) {
+            throw new CustomError("Conta não encontrada", 404, 'NOT_FOUND');
+        }
+
+        const saldoCentavos = Math.round(Number(result.saldo));
+        if (saldoCentavos < valorCentavos) {
+            throw new CustomError(`Saldo insuficiente para o saque. O saldo atual é de: R$ ${integerToDecimal(saldoCentavos)}`, 400, 'BAD_REQUEST');
+        }
+         
+ 
+        query = `UPDATE clientes SET saldo = saldo - ? WHERE id = ?`;
+        const response = await queryExecutor.dbRunWithLastID(query, [valorCentavos, id]);
+
+        if (!response || !response.changes) {
+            throw new CustomError("Erro ao realizar o saque. Tente novamente mais tarde", 500, 'SERVER_ERROR');
+        }
+
+        query = `SELECT saldo FROM clientes WHERE id = ?`;
+        const novoResult = await queryExecutor.dbGetAsync(query, [id]);
+        
+        return { saldo: novoResult.saldo }; // Retorna o saldo formatado
+    } catch (error) {
+        if (error.isOperational) {
+            throw error;
+        }
+        throw new CustomError('Ocorreu um erro ao adicionar o saldo na sua conta. Tente novamente mais tarde', 500, 'SERVER_ERROR');
+    }
+};
+
+
+
+
+// router.post('/clientes/:id/sacar', (req,res) => {
+//     const { id } = req.params;
+//     const { valor } = req.body;
+//     console.log({id, valor});
+//     try
+//     {
+//         db.run(`UPDATE clientes SET saldo = saldo - ? WHERE id = ?`, [valor, id]);
+//         return res.status(200).json();
+//     }
+//     catch(err){
+//         console.log(err);
+//         return res.status(400).json(err);
+//     }
+// })
