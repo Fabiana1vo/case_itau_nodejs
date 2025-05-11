@@ -8,10 +8,12 @@ exports.findAll = async () => {
     try {
         logger.info('Iniciando a busca de todos os clientes.')
         
-        const query = 'SELECT * FROM clientes';
+        // const query = 'SELECT * FROM clientes';
+        const query = '';
 
         if(!query) {
-            throw new CustomError('Você precisa informar a query de consulta', 400)
+            console.log('nao tem query')
+            throw new CustomError('Você precisa informar a query de consulta', 400, 'BAD_REQUEST')
         }
 
         const rows = await dbAllAsync(query, [])
@@ -19,8 +21,8 @@ exports.findAll = async () => {
         console.log(rows, 'estou logando os rows')
         return rows 
     } catch (error) {
-        logger.error()
-         throw new CustomError('Ocorreu um erro ao realizar a busca', 500)
+        logger.error(`Ocorreu um erro durante a busca ${error.message}`)
+        throw error;
     }
 }
 
