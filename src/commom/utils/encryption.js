@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+
 require('dotenv').config()
 
 const salt = process.env.SALT
@@ -21,7 +22,7 @@ class Crypto {
     }
 
 
-    encrypt(data) {
+    static encrypt(data) {
         const iv = crypto.randomBytes(16);
         const ivHex = iv.toString("hex");
 
@@ -37,13 +38,12 @@ class Crypto {
     }
 
 
-    decrypt(data) {
+    static decrypt(data) {
         if (data && !data.includes(":")) {
             return data;
         }
 
         try {
-
             const [encryptedText, ivHex] = data.split(":");
             const iv = Buffer.from(ivHex, "hex");
 

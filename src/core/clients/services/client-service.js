@@ -3,6 +3,7 @@ const { CustomError } = require("../../../commom/errors/custom-error");
 const clientRepository = require("../repository/client-repository");
 const { integerToDecimal, convertCurrencyToCents, } = require("../../../commom/utils/currency-formatter");
 const queryExecutor = require("../../../commom/database/query-executor");
+const crypto = require('../../../commom/utils/encryption')
 
 /**
  * Represents the result set retrieved from the database query.
@@ -26,6 +27,8 @@ exports.findAll = async () => {
  * @returns {Promise<object|Array<object>>} Cliente encontrado.
  * @throws {CustomError} 400 ('ID necessário'), 404 ('Cliente não localizado'), 500 ('Erro ao buscar').
  */
+
+
 exports.find = async (id) => {
   logger.info(`Iniciando a busca do cliente de id: ${id} no banco de dados...`);
 
@@ -50,7 +53,10 @@ exports.create = async (nome, email) => {
 
   logger.info("O usuário ainda não existe. Iniciando o processo de registro.");
 
-  const result = await clientRepository.dbInsertClient(nome, email);
+  const encryptedNome = Crypto.encrypt(nome);
+  const result = await clientRepository.dbInsertClient(encryptedNome, email);
+
+  
   const insertedId = result?.lastID ?? null;
 
   if (!insertedId) {
@@ -61,6 +67,7 @@ exports.create = async (nome, email) => {
 
   return { id: insertedId, nome, email, saldo: 0 };
 };
+
 
 exports.update = async (id, nome, email) => {
  const fieldsToUpdate = [];
