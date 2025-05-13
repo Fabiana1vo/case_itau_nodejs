@@ -5,7 +5,7 @@ const logger = require('../../config/logger')('ERROR_HANDLER');
 function errorHandler(err, req, res, next) {
   const timestamp = new Date().toISOString();
   if (err instanceof CustomError) {
-    logger.error(`Erro personalizado: ${err.message}`, {
+    logger.error(`Erro capturado: ${err.message}`, {
       statusCode: err.statusCode,
       stack: err.stack,
       method: req.method,

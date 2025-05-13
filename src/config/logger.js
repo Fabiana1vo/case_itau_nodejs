@@ -1,6 +1,12 @@
 const { format } = require('path')
 var winston = require('winston')
 
+/**
+ * @module logger
+ * @description Configures a Winston logger for console and file logging with custom formatting, including module name, level, message, stack trace, and metadata.
+ * @param {string} name - Module name to include in log messages.
+ * @returns {object} Winston logger instance with specified module name.
+ */
 
 const logger = winston.createLogger({
   levels: winston.config.npm.levels,
