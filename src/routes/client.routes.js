@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { getClients, getClient, createClient, updateClient, deleteClient, deposit, withdraw } = require('../core/clients/controllers/client-controller')
-// const authMiddleware = require('../common/middleware/authMiddleware');
+const authMiddleware = require('../commom/middleware/auth-middleware');
 
-// router.use(authMiddleware);
+
+router.use(authMiddleware);
 
 /**
  * @module clientesRoutes
