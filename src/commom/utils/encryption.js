@@ -6,6 +6,12 @@ require('dotenv').config()
 const salt = process.env.SALT
 const passphrase = process.env.SECRET_KEY;
 
+
+/**
+ * Utility class for data encryption and decryption using AES-256-CBC.
+ * @type {Crypto}
+ */
+
 class Crypto {
     static salt = salt;
     static key = crypto.pbkdf2Sync(passphrase, Crypto.salt, 1000, 32, "sha256");
@@ -16,8 +22,6 @@ class Crypto {
 
 
         const cipher = crypto.createCipheriv("aes-256-cbc", Crypto.key, iv);
-
-        //* pega o data -> 1ª param, pega o dado puro em utf - criptografa usando o createCipheriv, e retorna isso em hexa 
         let encrypted = cipher.update(data, "utf8", "hex");
 
         encrypted += cipher.final("hex");
@@ -27,7 +31,6 @@ class Crypto {
 
 
     static decrypt(data) {
-        console.log(data,'dado antes de descriptografar')
         logger.info(`Dado antes de descriptografar: ${data}`)
         if (data && !data.includes(":")) {
             return data;
