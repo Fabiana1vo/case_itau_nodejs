@@ -3,7 +3,7 @@ const { CustomError } = require("../../../commom/errors/custom-error");
 const clientRepository = require("../repository/client-repository");
 const { integerToDecimal, convertCurrencyToCents, } = require("../../../commom/utils/currency-formatter");
 const queryExecutor = require("../../../commom/database/query-executor");
-const crypto = require('../../../commom/utils/encryption')
+const Crypto = require('../../../commom/utils/encryption')
 
 /**
  * Represents the result set retrieved from the database query.

@@ -24,7 +24,7 @@ exports.dbInsertClient = (nome, email) => {
   return queryExecutor.dbRunWithLastID(query, [nome, email]);
 };
 
-exports.dbUpdateClientById = (query=[], id) => {
-      const query = `UPDATE clientes SET ${query.join(", ")} WHERE id = ?`; 
-      queryExecutor.dbRunWithLastID(query, values);
+exports.dbUpdateClientById = (command=[], id) => {
+     query = `UPDATE clientes SET ${command.join(", ")} WHERE id = ?`; 
+      queryExecutor.dbRunWithLastID(command, values);
 }
