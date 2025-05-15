@@ -4,10 +4,10 @@ const { getClients, getClient, createClient, updateClient, deleteClient, deposit
 const authMiddleware = require('../commom/middleware/auth-middleware');
 
 router.post('/', createClient);
-
-router.get('/', getClients);
-
+router.get('/', getClients); 
 router.use(authMiddleware);
+
+
 
 /**
  * @module clientesRoutes

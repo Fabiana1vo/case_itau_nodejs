@@ -1,10 +1,15 @@
 const crypto = require('crypto')
+const { CustomError } = require('../errors/custom-error')
 const logger = require('../../config/logger')('DECRYPT_UTIL')
 
 require('dotenv').config()
 
+    if(!process.env.SALT || !process.env.PASSPHRASE){
+        throw new CustomError("O SALT e PASSPHRASE devem existir no arquivo .env", 400, 'BAD_REQUEST')
+    }
+    
 const salt = process.env.SALT
-const passphrase = process.env.SECRET_KEY;
+const passphrase = process.env.PASSPHRASE;
 
 
 /**
@@ -31,7 +36,7 @@ class Crypto {
 
 
     static decrypt(data) {
-        logger.info(`Dado antes de descriptografar: ${data}`)
+        logger.info(`Inciando o processo de descriptografia do dado: ${data}`)
           if (!data) {
             return data;
         }
@@ -42,11 +47,12 @@ class Crypto {
 
 
         try {
-
+            
              const parts = data.split(":");
+        
                 if (parts.length !== 2) {
                 return data;
-            }
+                }
             
             const [encryptedText, ivHex] = data.split(":");
             const iv = Buffer.from(ivHex, "hex");
@@ -57,7 +63,8 @@ class Crypto {
 
             return decrypted;
         } catch (error) {
-            return data;
+            logger.error(`Falha na descriptografia: ${error.message}`);
+            throw new CustomError('Ocorreu um erro ao tentar descriptografar o dado', 500,'SERVER_ERROR')
         }
     }
 }
