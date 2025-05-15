@@ -2,7 +2,6 @@ const logger = require("../../../config/logger")("CLIENT_SERVICE");
 const { CustomError } = require("../../../commom/errors/custom-error");
 const clientRepository = require("../repository/client-repository");
 const { integerToDecimal, convertCurrencyToCents, } = require("../../../commom/utils/currency-formatter");
-const queryExecutor = require("../../../commom/database/query-executor");
 const Crypto = require('../../../commom/utils/encryption')
 
 /**
@@ -31,13 +30,10 @@ exports.findAll = async () => {
 
 exports.find = async (id) => {
   logger.info(`Iniciando a busca do cliente de id: ${id} no banco de dados...`);
-
   const result = await clientRepository.dbGetById(id);
-
   if (!result) {
     throw new CustomError("Cliente não localizado!", 404, "NOT_FOUND");
   }
-
   logger.info(`Cliente ${id} localizado com sucesso!`);
   return result;
 };
@@ -46,7 +42,6 @@ exports.find = async (id) => {
 exports.create = async (nome, email) => {
   logger.info("Inciando o registro de um novo usuário");
   const existingUser = await clientRepository.dbGetByEmail(email);
-  console.log(existingUser,'existingUser')
 
   if (existingUser) {
     throw new CustomError("Este e-mail já está em uso.", 400, "BAD_REQUEST");
@@ -56,16 +51,11 @@ exports.create = async (nome, email) => {
 
   const encryptedNome = Crypto.encrypt(nome);
   const result = await clientRepository.dbInsertClient(encryptedNome, email);
-
-  
   const insertedId = result?.lastID ?? null;
-
   if (!insertedId) {
     throw new CustomError("Erro ao cadastrar cliente.", 500, "SERVER_ERROR");
   }
-
   logger.info(`Cliente ${insertedId}, ${nome}, criado com sucesso!`);
-
   return { id: insertedId, nome, email, saldo: 0 };
 };
 
@@ -84,13 +74,7 @@ exports.update = async (id, nome, email) => {
       values.push(email);
     }
 
-    const query = `UPDATE clientes SET ${fieldsToUpdate.join(", ")} WHERE id = ?`; 
-
-    values.push(id);
-
-    
-
-    // const result = 
+    const result = await clientRepository.dbUpdateClientById(fieldsToUpdate,values,id)
 
     if (result.changes === 0) {
       throw new CustomError("Cliente não encontrado ou nenhum dado foi alterado.", 404, "NOT_FOUND"
@@ -102,14 +86,10 @@ exports.update = async (id, nome, email) => {
 };
 
 
-
-
 exports.delete = async (id) => {
   try {
     logger.info(`Iniciando o processo de exclusão da conta: ${id}`);
-    let query = `SELECT saldo FROM clientes WHERE id = ?`;
-
-    const saldo = await queryExecutor.dbGetAsync(query, [id]);
+    const saldo = await clientRepository.dbGetSaldoFromClientById(id)
 
     if (!saldo) {
       throw new CustomError("Cliente não localizado", 400, "BAD_REQUEST");
@@ -123,14 +103,15 @@ exports.delete = async (id) => {
       );
     }
 
-    query = `DELETE FROM clientes WHERE id = ?`;
-    await queryExecutor.dbRunAsync(query, [id]);
+    await clientRepository.dbDeleteClientById(id)
     logger.info(`Cliente ${id} deletado com sucesso!`);
     return;
+
   } catch (error) {
     throw error;
   }
 };
+
 
 exports.deposit = async (id, valor) => {
   try {
@@ -140,7 +121,6 @@ exports.deposit = async (id, valor) => {
       throw new CustomError("Valor inválido", 400, "BAD_REQUEST");
     }
 
-    // Converter o valor para centavos
     const valorCentavos = convertCurrencyToCents(valor);
 
     if (valorCentavos <= 0) {
@@ -151,12 +131,8 @@ exports.deposit = async (id, valor) => {
       );
     }
 
-    let query = `UPDATE clientes SET saldo = saldo + ? WHERE id = ?`;
-    const response = await queryExecutor.dbRunWithLastID(query, [
-      valorCentavos,
-      id,
-    ]);
-
+    const response = await clientRepository.dbDepositSaldoById(valorCentavos, id)
+   
     if (!response || !response.changes) {
       throw new CustomError(
         "Ocorreu um erro ao tentar adicionar o saldo na sua conta. Tente novamente mais tarde",
@@ -166,8 +142,7 @@ exports.deposit = async (id, valor) => {
     }
 
     // Buscar o saldo atualizado em centavos
-    query = `SELECT saldo FROM clientes WHERE id = ?`;
-    const result = await queryExecutor.dbGetAsync(query, [id]);
+    const result = clientRepository.dbGetSaldoFromClientById(id)
 
     logger.info(
       `Saldo adicionado com sucesso. O saldo atual é de: ${result.saldo}`
@@ -196,14 +171,15 @@ exports.withdraw = async (id, valor) => {
         "BAD_REQUEST"
       );
     }
+ 
+    const result =await clientRepository.dbGetSaldoFromClientById(id);
 
-    let query = `SELECT saldo FROM clientes WHERE id = ?`;
-    const result = await queryExecutor.dbGetAsync(query, [id]);
     if (!result) {
       throw new CustomError("Conta não encontrada", 404, "NOT_FOUND");
     }
 
     const saldoCentavos = Math.round(Number(result.saldo));
+
     if (saldoCentavos < valorCentavos) {
       throw new CustomError(
         `Saldo insuficiente para o saque. O saldo atual é de: R$ ${integerToDecimal(
@@ -214,12 +190,8 @@ exports.withdraw = async (id, valor) => {
       );
     }
 
-    query = `UPDATE clientes SET saldo = saldo - ? WHERE id = ?`;
-    const response = await queryExecutor.dbRunWithLastID(query, [
-      valorCentavos,
-      id,
-    ]);
-
+    const response = await clientRepository.dbWithdrawSaldoById(valorCentavos,id) 
+    
     if (!response || !response.changes) {
       throw new CustomError(
         "Erro ao realizar o saque. Tente novamente mais tarde",
@@ -228,10 +200,9 @@ exports.withdraw = async (id, valor) => {
       );
     }
 
-    query = `SELECT saldo FROM clientes WHERE id = ?`;
-    const novoResult = await queryExecutor.dbGetAsync(query, [id]);
-
-    return { saldo: novoResult.saldo }; // Retorna o saldo formatado
+    const novoResult = await clientRepository.dbGetSaldoFromClientById(id)
+    
+    return { saldo: novoResult.saldo };
   } catch (error) {
     throw error;
   }

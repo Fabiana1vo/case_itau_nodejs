@@ -12,10 +12,9 @@ app.use(cors())
 
 app.use('/api/v1', routes)
  
-app.use(errorHandler); // Deve manter-se por último para conseguir capturar todos os erros
+app.use(errorHandler); 
 
 
-//Centralizar as configurações de servidor somente - o arquivo se chama server e tem até rota
 
 const PORT = process.env.PORT || 3000;
 

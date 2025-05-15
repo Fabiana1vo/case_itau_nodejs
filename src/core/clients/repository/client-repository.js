@@ -20,7 +20,31 @@ exports.dbInsertClient = (nome, email) => {
   return queryExecutor.dbRunWithLastID(query, [nome, email]);
 };
 
-exports.dbUpdateClientById = (command=[], id) => {
-    query = `UPDATE clientes SET ${command.join(", ")} WHERE id = ?`; 
-    queryExecutor.dbRunWithLastID(command, values);
+exports.dbUpdateClientById = (fields=[], values=[], id) => {
+  const query = `UPDATE clientes SET ${fields.join(", ")} WHERE id = ?`; 
+   return queryExecutor.dbRunWithLastID(query, [...values, id]);
+
 }
+
+exports.dbGetSaldoFromClientById = (id) => {
+    const query = `SELECT saldo FROM clientes WHERE id = ?`;
+    return queryExecutor.dbGetAsync(query, [id]);
+}  
+
+
+exports.dbDeleteClientById = (id) => {
+    const query = `DELETE FROM clientes WHERE id = ?`;
+    return queryExecutor.dbGetAsync(query, [id]);
+}
+
+exports.dbDepositSaldoById = (valorCentavos, id) => {
+  const query = `UPDATE clientes SET saldo = saldo + ? WHERE id = ?`;
+  return queryExecutor.dbRunWithLastID(query, [valorCentavos,id,]);
+}
+
+exports.dbWithdrawSaldoById = (valorCentavos, id) => {
+  const query = `UPDATE clientes SET saldo = saldo -  ? WHERE id = ?`;
+  return queryExecutor.dbRunWithLastID(query, [valorCentavos,id,]);
+}
+
+

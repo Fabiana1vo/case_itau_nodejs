@@ -118,10 +118,9 @@ exports.updateClient = async (req, res, next) => {
     if (!clientValidations.isValidNumericId(id)) {
       throw new CustomError("Informe um ID válido", 404, "BAD_REQUEST");
     }
-
     if (
-      (!nome || clientValidations.isNotUndefinedOrNullValue(nome)) &&
-      (!email || clientValidations.isNotUndefinedOrNullValue(email))
+      (!nome || !clientValidations.isNotUndefinedOrNullValue(nome)) &&
+      (!email || !clientValidations.isNotUndefinedOrNullValue(email))
     ) {
       throw new CustomError(
         "Você precisa informar pelo menos um campo válido: nome ou email.",

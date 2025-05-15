@@ -23,7 +23,7 @@ exports.initDB = async () => {
             )
         `);
 
-        // Inserir cliente de teste
+        // Inserir cliente de teste - sem crypto
         const nomeTeste = 'TESTE';
         const emailTeste = 'TESTE@TESTE.com.br';
 
@@ -35,13 +35,6 @@ exports.initDB = async () => {
         logger.info('Tabelas inicializadas com sucesso.');
     } catch (error) {
         logger.error('Erro ao inicializar o banco de dados:', error);
-    } finally {
-        // db.close((err) => {
-        //     if (err) {
-        //         logger.error('Erro ao fechar a conexão com o banco de dados:', err);
-        //     } else {
-        //         logger.info('Conexão com o banco de dados fechada.');
-        //     }
-        // });
     }
 };
+

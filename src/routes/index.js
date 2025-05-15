@@ -17,7 +17,6 @@ router.use('/clientes', clientesRoutes)
 //* Implementar a auth routes aqui
 
 router.get('/', (req, res) => {
-  console.log('na rota get pura')
   res.json({ message: 'API está funcionando' });
 });
 
