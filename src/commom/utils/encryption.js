@@ -32,11 +32,22 @@ class Crypto {
 
     static decrypt(data) {
         logger.info(`Dado antes de descriptografar: ${data}`)
-        if (data && !data.includes(":")) {
+          if (!data) {
             return data;
         }
 
+        if (typeof data !== 'string' || !data.includes(":")) {
+            return data;
+        }
+
+
         try {
+
+             const parts = data.split(":");
+                if (parts.length !== 2) {
+                return data;
+            }
+            
             const [encryptedText, ivHex] = data.split(":");
             const iv = Buffer.from(ivHex, "hex");
 
@@ -48,7 +59,6 @@ class Crypto {
         } catch (error) {
             return data;
         }
-
     }
 }
 

@@ -46,6 +46,7 @@ exports.find = async (id) => {
 exports.create = async (nome, email) => {
   logger.info("Inciando o registro de um novo usuário");
   const existingUser = await clientRepository.dbGetByEmail(email);
+  console.log(existingUser,'existingUser')
 
   if (existingUser) {
     throw new CustomError("Este e-mail já está em uso.", 400, "BAD_REQUEST");

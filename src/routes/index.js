@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const clientesRoutes = require('./client.routes');
-// const authRoutes = require('./auth.routes');
+const authRoutes = require('./auth.routes');
 
 /**
  * @function router.use
@@ -11,6 +11,7 @@ const clientesRoutes = require('./client.routes');
  * @example
  * router.use('/clientes', clientesRoutes); // All client routes are prefixed with '/clientes'
  */
+router.use('/auth', authRoutes)
 router.use('/clientes', clientesRoutes)
 
 //* Implementar a auth routes aqui

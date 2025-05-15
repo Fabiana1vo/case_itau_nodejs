@@ -1,8 +1,8 @@
 const { CustomError } = require("../../../commom/errors/custom-error");
 const { formatSuccessResponse } = require("../../../commom/utils/response-formatter");
 const logger = require("../../../config/logger")("CLIENT_SERVICE");
-const clientService = require("../services/client-service");
 const clientValidations = require("../../../commom/validations/client-validations");
+const clientService = require("../services/client-service");
 
 /**
  * @async
