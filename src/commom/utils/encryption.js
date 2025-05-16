@@ -26,7 +26,7 @@ class Crypto {
         const ivHex = iv.toString("hex");
 
 
-        const cipher = crypto.createCipheriv("aes-256-cbc", Crypto.key, iv);
+        const cipher = crypto.createCipheriv("aes-256-cbc", Crypto.key, ivHex);
         let encrypted = cipher.update(data, "utf8", "hex");
 
         encrypted += cipher.final("hex");
