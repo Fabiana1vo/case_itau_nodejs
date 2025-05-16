@@ -15,9 +15,7 @@ const Crypto = require('../../commom/utils/encryption')
 const formatSuccessResponse = (data, message = 'Operacao realizada com sucesso') => {
     const formatData = Array.isArray(data)  ? data.map(item => ({ ...item, nome: Crypto.decrypt(item.nome) , saldo: item.saldo ? currencyFormatter.convertCurrencyIntegerToDecimal(item.saldo) : item.saldo })) : {...data, nome: Crypto.decrypt(data.nome), saldo: data.saldo ? currencyFormatter.convertCurrencyIntegerToDecimal(data.saldo) : data.saldo }
     
-    if(data && data.saldo){
-        console.log(data,'identifiquei q tem saldo na response vou formatar')
-    }
+
     return { 
         success:true, 
         message,
