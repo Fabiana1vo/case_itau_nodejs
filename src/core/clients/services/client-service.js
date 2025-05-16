@@ -171,13 +171,13 @@ exports.delete = async (id) => {
 exports.deposit = async (id, valor) => {
   try {
    
+    console.log(valor,'vendo o valor no deposito')
+
     logger.info(`Iniciando a adição de saldo para conta: ${id}`);
 
-    if (isNaN(valor) || valor === null || valor === undefined) {
-      throw new CustomError("Valor inválido", 400, "BAD_REQUEST");
-    }
 
     const valorCentavosParaInteiro = convertCurrencyToInteger(valor);
+    console.log(valorCentavosParaInteiro,'valorCentavosParaInteiro')
 
     if (valorCentavosParaInteiro <= 0) {
       throw new CustomError(
@@ -188,7 +188,7 @@ exports.deposit = async (id, valor) => {
     }
 
     const response = await clientRepository.dbDepositSaldoById(valorCentavosParaInteiro, id)
-   
+    console.log(response,'response')
     if (!response || !response.changes) {
       throw new CustomError(
         "Ocorreu um erro ao tentar adicionar o saldo na sua conta. Tente novamente mais tarde",
@@ -225,11 +225,7 @@ exports.withdraw = async (id, valor) => {
   try {
     logger.info(`Iniciando o saque de saldo para conta: ${id}`);
 
-    if (isNaN(valor) || valor === null || valor === undefined) {
-      throw new CustomError("Valor inválido", 400, "BAD_REQUEST");
-    }
-
-    const valorCentavosParaInteiro = convertCurrencyToInteger(valor);
+      const valorCentavosParaInteiro = convertCurrencyToInteger(valor);
 
     if (valorCentavosParaInteiro <= 0) {
       throw new CustomError(

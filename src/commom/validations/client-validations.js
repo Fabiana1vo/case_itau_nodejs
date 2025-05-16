@@ -59,17 +59,10 @@ function isNotUndefinedOrNullValue(value) {
  * isValidCurrencyValue(null); // Returns false
  */
 
-function isValidCurrencyValue (value) {
-    if (!value) {
-        return false;
-    }
-    return value !== undefined || value !== null;
-}
 
 
 module.exports = {
     isValidNumericId,
     isValidEmail,
     isNotUndefinedOrNullValue,
-    isValidCurrencyValue,
 }

@@ -184,7 +184,7 @@ exports.deposit = async (req, res, next) => {
       throw new CustomError("Informe um ID válido", 404, "BAD_REQUEST");
     }
 
-    if (clientValidations.isValidCurrencyValue(valor)) {
+    if (isNaN(valor) || valor === null || valor === undefined) {
       throw new CustomError("Valor inválido", 400, "BAD_REQUEST");
     }
 
@@ -212,6 +212,10 @@ exports.withdraw = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { valor } = req.body;
+
+      if (isNaN(valor) || valor === null || valor === undefined) {
+      throw new CustomError("Valor inválido", 400, "BAD_REQUEST");
+    }
 
     const response = await clientService.withdraw(id, valor);
     res
