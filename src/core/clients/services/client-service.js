@@ -69,16 +69,24 @@ exports.update = async (id, nome, email) => {
       values.push(nome);
     }
 
-    if (email) {
+   if (email) {
+    const emailAlreadyExists = await clientRepository.dbGetByEmail(email);
+
+    if (emailAlreadyExists && String(emailAlreadyExists.id) !== String(id)) {
+      throw new CustomError('O e-mail informado já existe!', 400, 'BAD_REQUEST');
+    }
+
+    const clientData = await clientRepository.dbGetById(id);
+
+    if (!clientData) {
+      throw new CustomError('Cliente não encontrado.', 404, 'NOT_FOUND');
+    }
+
+    if (clientData.email !== email) {
       fieldsToUpdate.push("email = ?");
       values.push(email);
     }
-
-    const emailAlreadyExists = await clientRepository.dbGetByEmail(email)
-
-    if(emailAlreadyExists){
-      throw new CustomError('O e-mail informado já existe!', 400, 'BAD_REQUEST')
-    }
+  }
     
     const result = await clientRepository.dbUpdateClientById(fieldsToUpdate,values,id)
 
