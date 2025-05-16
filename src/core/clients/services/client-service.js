@@ -38,6 +38,15 @@ exports.find = async (id) => {
   return result;
 };
 
+/**
+ * @async
+ * @function exports.create
+ * @description Registers a new client in the system, validating if the email is already in use.
+ * @param {string} nome - Client's name.
+ * @param {string} email - Client's email address.
+ * @returns {Promise<object>} An object containing the newly created client data: id, nome, email, and initial balance.
+ * @throws {CustomError} 400 ('This email is already in use.'), 500 ('Failed to register client.').
+ */
 
 exports.create = async (nome, email) => {
   logger.info("Inciando o registro de um novo usuário");
@@ -63,45 +72,64 @@ exports.create = async (nome, email) => {
 };
 
 
+/**
+ * @async
+ * @function exports.update
+ * @description Updates a client's data (name and/or email) by their ID, validating if the client exists and if the new email is available.
+ * @param {string|number} id - The ID of the client to be updated.
+ * @param {string} [nome] - New name for the client (optional).
+ * @param {string} [email] - New email for the client (optional).
+ * @returns {Promise<object>} An object containing the updated client data: id and the updated fields.
+ * @throws {CustomError} 404 ('Cliente não encontrado.'), 400 ('O e-mail informado já existe!'), 404 ('Cliente não encontrado ou nenhum dado foi alterado.').
+ */
+
 exports.update = async (id, nome, email) => {
- const fieldsToUpdate = [];
-    const values = [];
+  const fieldsToUpdate = [];
+      const values = [];
 
-     const clientData = await clientRepository.dbGetById(id);
+      const clientData = await clientRepository.dbGetById(id);
 
-    if (!clientData) {
-      throw new CustomError('Cliente não encontrado.', 404, 'NOT_FOUND');
+      if (!clientData) {
+        throw new CustomError('Cliente não encontrado.', 404, 'NOT_FOUND');
+      }
+
+      if (nome) {
+        fieldsToUpdate.push("nome = ?");
+        values.push(nome);
+      }
+
+    if (email) {
+      const emailAlreadyExists = await clientRepository.dbGetByEmail(email);
+
+      if (emailAlreadyExists && String(emailAlreadyExists.id) !== String(id)) {
+        throw new CustomError('O e-mail informado já existe!', 400, 'BAD_REQUEST');
+      } 
+
+      if (clientData.email !== email) {
+        fieldsToUpdate.push("email = ?");
+        values.push(email);
+      }
     }
+      
+      const result = await clientRepository.dbUpdateClientById(fieldsToUpdate,values,id)
 
-    if (nome) {
-      fieldsToUpdate.push("nome = ?");
-      values.push(nome);
-    }
+      if (result.changes === 0) {
+        throw new CustomError("Cliente não encontrado ou nenhum dado foi alterado.", 404, "NOT_FOUND"
+        );
+      }
 
-   if (email) {
-    const emailAlreadyExists = await clientRepository.dbGetByEmail(email);
+      logger.info(`Cliente ${id} atualizado com sucesso!`);
+      return { id, ...(nome && { nome }), ...(email && { email }) };
+  };
 
-    if (emailAlreadyExists && String(emailAlreadyExists.id) !== String(id)) {
-      throw new CustomError('O e-mail informado já existe!', 400, 'BAD_REQUEST');
-    } 
-
-    if (clientData.email !== email) {
-      fieldsToUpdate.push("email = ?");
-      values.push(email);
-    }
-  }
-    
-    const result = await clientRepository.dbUpdateClientById(fieldsToUpdate,values,id)
-
-    if (result.changes === 0) {
-      throw new CustomError("Cliente não encontrado ou nenhum dado foi alterado.", 404, "NOT_FOUND"
-      );
-    }
-
-    logger.info(`Cliente ${id} atualizado com sucesso!`);
-    return { id, ...(nome && { nome }), ...(email && { email }) };
-};
-
+/**
+ * @async
+ * @function exports.delete
+ * @description Deletes a client by ID after validating that the client exists and has no remaining balance.
+ * @param {string|number} id - The ID of the client to be deleted.
+ * @returns {Promise<void>} No content is returned upon successful deletion.
+ * @throws {CustomError} 400 ('Não é possível excluir. O usuário não foi localizado'), 400 ('Você precisa sacar todo o saldo da sua conta antes de solicitar a exclusão').
+ */
 
 exports.delete = async (id) => {
   try {
@@ -128,6 +156,17 @@ exports.delete = async (id) => {
     throw error;
   }
 };
+
+/**
+ * @async
+ * @function exports.deposit
+ * @description Adds a deposit amount to a client's balance by ID, validating the deposit value and client existence.
+ * @param {string|number} id - The ID of the client receiving the deposit.
+ * @param {string|number} valor - The deposit amount in decimal format (e.g. '10.50' or 10.5).
+ * @returns {Promise<object>} An object containing the updated balance in cents.
+ * @throws {CustomError} 400 ('Valor inválido'), 400 ('O valor do depósito deve ser maior que zero'), 500 ('Ocorreu um erro ao tentar adicionar o saldo na sua conta. Tente novamente mais tarde').
+ */
+
 
 exports.deposit = async (id, valor) => {
   try {
@@ -170,6 +209,17 @@ exports.deposit = async (id, valor) => {
     throw error;
   }
 };
+
+
+/**
+ * @async
+ * @function exports.withdraw
+ * @description Withdraws a specified amount from a client's balance by ID, validating the value, client existence, and sufficient balance.
+ * @param {string|number} id - The ID of the client performing the withdrawal.
+ * @param {string|number} valor - The withdrawal amount in decimal format (e.g. '10.50' or 10.5).
+ * @returns {Promise<object>} An object containing the updated balance in cents.
+ * @throws {CustomError} 400 ('Valor inválido'), 400 ('O valor do saque deve ser maior que zero'), 404 ('Conta não encontrada'), 400 ('Saldo insuficiente para o saque'), 500 ('Erro ao realizar o saque. Tente novamente mais tarde').
+ */
 
 exports.withdraw = async (id, valor) => {
   try {

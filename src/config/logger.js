@@ -1,4 +1,3 @@
-const { format } = require('path')
 var winston = require('winston')
 
 /**

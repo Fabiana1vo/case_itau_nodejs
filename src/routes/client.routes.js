@@ -4,7 +4,6 @@ const { getClients, getClient, createClient, updateClient, deleteClient, deposit
 const authMiddleware = require('../commom/middleware/auth-middleware');
 
 router.post('/', createClient);
-router.get('/', getClients); 
 router.use(authMiddleware);
 
 
@@ -20,8 +19,9 @@ router.use(authMiddleware);
  */
 
 router.get('/:id', getClient)
+router.get('/', getClients); 
 router.put('/:id', updateClient)
-router.delete('/:id',deleteClient);
+router.delete('/:id', deleteClient);
 router.post('/:id/depositar', deposit);
 router.post('/:id/sacar', withdraw);
 

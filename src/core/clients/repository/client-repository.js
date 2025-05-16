@@ -1,5 +1,13 @@
 const queryExecutor = require('../../../commom/database/query-executor')
 
+/**
+ * @module clientRepository
+ * @description Module responsible for executing SQL queries related to the "clientes" table.
+ *              Provides functions to fetch, insert, update, delete clients, and manage account balances.
+ *              All operations use the queryExecutor to run asynchronous database commands.
+ */
+
+
 exports.dbAll = async () => {
     const query = 'SELECT * FROM clientes';
     return queryExecutor.dbAllAsync(query, [])

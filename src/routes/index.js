@@ -14,8 +14,6 @@ const authRoutes = require('./auth.routes');
 router.use('/auth', authRoutes)
 router.use('/clientes', clientesRoutes)
 
-//* Implementar a auth routes aqui
-
 router.get('/', (req, res) => {
   res.json({ message: 'API está funcionando' });
 });

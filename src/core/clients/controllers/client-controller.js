@@ -174,6 +174,7 @@ exports.deleteClient = async (req, res, next) => {
  * @returns {Promise<object>} Updated client account information after deposit.
  * @throws {CustomError} 400 ('Invalid deposit amount'), 404 ('Invalid ID provided'), 500 ('Error processing deposit').
  */
+
 exports.deposit = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -206,6 +207,7 @@ exports.deposit = async (req, res, next) => {
  * @returns {Promise<object>} Updated client account information after withdrawal.
  * @throws {CustomError} 500 ('Error processing withdrawal').
  */
+
 exports.withdraw = async (req, res, next) => {
   try {
     const { id } = req.params;

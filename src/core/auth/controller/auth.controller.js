@@ -1,6 +1,5 @@
 const { CustomError } = require("../../../commom/errors/custom-error");
 const { formatSuccessResponse } = require("../../../commom/utils/response-formatter");
-const logger = require("../../../config/logger")("AUTH_SERVICE");
 const clientValidations = require("../../../commom/validations/client-validations");
 const authLogin = require('../service/auth.service')
 
