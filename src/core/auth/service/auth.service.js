@@ -15,8 +15,8 @@ if(!clientExists){
     throw new CustomError('E-mail não localizado. Verifique e tente novamente!', 404, 'NOT_FOUND')
 }
 
-const decryptName = Crypto.decrypt(clientExists.nome) 
-const token = generateAuthToken(decryptName,clientExists.id)
+const decryptedName = Crypto.decrypt(clientExists.nome) 
+const token = generateAuthToken(decryptedName,clientExists.id)
 return { token }
 }   
 
