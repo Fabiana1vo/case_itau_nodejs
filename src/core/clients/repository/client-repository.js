@@ -37,14 +37,14 @@ exports.dbDeleteClientById = (id) => {
     return queryExecutor.dbGetAsync(query, [id]);
 }
 
-exports.dbDepositSaldoById = (valorCentavos, id) => {
+exports.dbDepositSaldoById = (valorCentavosParaInteiro, id) => {
   const query = `UPDATE clientes SET saldo = saldo + ? WHERE id = ?`;
-  return queryExecutor.dbRunWithLastID(query, [valorCentavos,id,]);
+  return queryExecutor.dbRunWithLastID(query, [valorCentavosParaInteiro,id,]);
 }
 
-exports.dbWithdrawSaldoById = (valorCentavos, id) => {
+exports.dbWithdrawSaldoById = (valorCentavosParaInteiro, id) => {
   const query = `UPDATE clientes SET saldo = saldo -  ? WHERE id = ?`;
-  return queryExecutor.dbRunWithLastID(query, [valorCentavos,id,]);
+  return queryExecutor.dbRunWithLastID(query, [valorCentavosParaInteiro,id,]);
 }
 
 

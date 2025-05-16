@@ -1,7 +1,7 @@
 const logger = require("../../../config/logger")("CLIENT_SERVICE");
 const { CustomError } = require("../../../commom/errors/custom-error");
 const clientRepository = require("../repository/client-repository");
-const { integerToDecimal, convertCurrencyToCents, } = require("../../../commom/utils/currency-formatter");
+const { convertCurrencyIntegerToDecimal, convertCurrencyToInteger, } = require("../../../commom/utils/currency-formatter");
 const Crypto = require('../../../commom/utils/encryption')
 
 /**
@@ -52,10 +52,13 @@ exports.create = async (nome, email) => {
   const encryptedNome = Crypto.encrypt(nome);
   const result = await clientRepository.dbInsertClient(encryptedNome, email);
   const insertedId = result?.lastID ?? null;
+
   if (!insertedId) {
     throw new CustomError("Erro ao cadastrar cliente.", 500, "SERVER_ERROR");
   }
+
   logger.info(`Cliente ${insertedId}, ${nome}, criado com sucesso!`);
+
   return { id: insertedId, nome, email, saldo: 0 };
 };
 
@@ -63,6 +66,12 @@ exports.create = async (nome, email) => {
 exports.update = async (id, nome, email) => {
  const fieldsToUpdate = [];
     const values = [];
+
+     const clientData = await clientRepository.dbGetById(id);
+
+    if (!clientData) {
+      throw new CustomError('Cliente não encontrado.', 404, 'NOT_FOUND');
+    }
 
     if (nome) {
       fieldsToUpdate.push("nome = ?");
@@ -74,13 +83,7 @@ exports.update = async (id, nome, email) => {
 
     if (emailAlreadyExists && String(emailAlreadyExists.id) !== String(id)) {
       throw new CustomError('O e-mail informado já existe!', 400, 'BAD_REQUEST');
-    }
-
-    const clientData = await clientRepository.dbGetById(id);
-
-    if (!clientData) {
-      throw new CustomError('Cliente não encontrado.', 404, 'NOT_FOUND');
-    }
+    } 
 
     if (clientData.email !== email) {
       fieldsToUpdate.push("email = ?");
@@ -106,7 +109,7 @@ exports.delete = async (id) => {
     const saldo = await clientRepository.dbGetSaldoFromClientById(id)
 
     if (!saldo) {
-      throw new CustomError("Cliente não localizado", 400, "BAD_REQUEST");
+      throw new CustomError("Não é possível excluir. O usuário não foi localizado", 400, "BAD_REQUEST");
     }
 
     if (saldo > 0) {
@@ -126,18 +129,18 @@ exports.delete = async (id) => {
   }
 };
 
-
 exports.deposit = async (id, valor) => {
   try {
+   
     logger.info(`Iniciando a adição de saldo para conta: ${id}`);
 
     if (isNaN(valor) || valor === null || valor === undefined) {
       throw new CustomError("Valor inválido", 400, "BAD_REQUEST");
     }
 
-    const valorCentavos = convertCurrencyToCents(valor);
+    const valorCentavosParaInteiro = convertCurrencyToInteger(valor);
 
-    if (valorCentavos <= 0) {
+    if (valorCentavosParaInteiro <= 0) {
       throw new CustomError(
         "O valor do depósito deve ser maior que zero",
         400,
@@ -145,7 +148,7 @@ exports.deposit = async (id, valor) => {
       );
     }
 
-    const response = await clientRepository.dbDepositSaldoById(valorCentavos, id)
+    const response = await clientRepository.dbDepositSaldoById(valorCentavosParaInteiro, id)
    
     if (!response || !response.changes) {
       throw new CustomError(
@@ -176,9 +179,9 @@ exports.withdraw = async (id, valor) => {
       throw new CustomError("Valor inválido", 400, "BAD_REQUEST");
     }
 
-    const valorCentavos = convertCurrencyToCents(valor);
+    const valorCentavosParaInteiro = convertCurrencyToInteger(valor);
 
-    if (valorCentavos <= 0) {
+    if (valorCentavosParaInteiro <= 0) {
       throw new CustomError(
         "O valor do saque deve ser maior que zero",
         400,
@@ -186,25 +189,25 @@ exports.withdraw = async (id, valor) => {
       );
     }
  
-    const result =await clientRepository.dbGetSaldoFromClientById(id);
+    const result = await clientRepository.dbGetSaldoFromClientById(id);
 
     if (!result) {
       throw new CustomError("Conta não encontrada", 404, "NOT_FOUND");
     }
 
-    const saldoCentavos = Math.round(Number(result.saldo));
+    const saldoCentavosParaInteiro = result.saldo
 
-    if (saldoCentavos < valorCentavos) {
-      throw new CustomError(
-        `Saldo insuficiente para o saque. O saldo atual é de: R$ ${integerToDecimal(
-          saldoCentavos
+    if (saldoCentavosParaInteiro < valorCentavosParaInteiro) {
+        throw new CustomError(
+        `Saldo insuficiente para o saque. O saldo atual é de: R$ ${convertCurrencyIntegerToDecimal(
+          saldoCentavosParaInteiro
         )}`,
         400,
         "BAD_REQUEST"
       );
     }
 
-    const response = await clientRepository.dbWithdrawSaldoById(valorCentavos,id) 
+    const response = await clientRepository.dbWithdrawSaldoById(valorCentavosParaInteiro,id) 
     
     if (!response || !response.changes) {
       throw new CustomError(
